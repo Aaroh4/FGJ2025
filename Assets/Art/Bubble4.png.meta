@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 5617ca9e747c1748387d53d78c6f3a50
+guid: e1730ef20a69b4a4080cfedd09e26b6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6066461974970091630
-    second: hq720_0
+      213: -5093844878195686178
+    second: Bubble4_0
+  - first:
+      213: -4904171894090817937
+    second: Bubble4_1
+  - first:
+      213: -2953220586501753682
+    second: Bubble4_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +102,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hq720_0
+      name: Bubble4_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 686
-        height: 386
+        x: 35
+        y: 12
+        width: 1368
+        height: 458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2973e7aa9f89fcba0800000000000000
-      internalID: -6066461974970091630
+      spriteID: ed4043652170f49b0800000000000000
+      internalID: -5093844878195686178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble4_1
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 199
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e134f45a1e0fbb0800000000000000
+      internalID: -4904171894090817937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble4_2
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 5
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4313ef58d0407d0800000000000000
+      internalID: -2953220586501753682
       vertices: []
       indices: 
       edges: []
@@ -160,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      hq720_0: -6066461974970091630
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
