@@ -12,24 +12,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8facc7f340c09c5428bc7ae1a2cfa4b4, type: 3}
   m_Name: EncounterParagraphs
   m_EditorClassIdentifier: 
-  firstEncounter:
+  playerFirstEncounter:
+    poorHit:
+      paragraphs: []
+    normalHit:
+      paragraphs:
+      - 'Stone of healing was in your grasp, bones will remain where you lay. '
+      - 'Power of nature was your once, lower than the gnomes you go now. '
+      - 'Skies were once your domain you beast, ties of earth bind you down to mud.  '
+      - 'Spirits heeded your command beast, limits of that are known to me. '
+      - 'Victory you used to assure, history will forget all that too. '
+      - 'Malevolent spirit you are, irreverent to godly will. '
+      - 'Messenger of higher planar beings, passenger to cosmic rivers. '
+      - 'Fearless is your reputation, nearness to me should cause you fright. '
+      - 'Authority over lesser spirits, majority were under your thrall. '
+      - 'Your claws wounded forever time, before I was taught protection. '
+      - 'Child stealer making mothers cry, reviled through all of lands of man.  '
+      - 'Revered for your awful powers, feared by those without knowledge over you. '
+    criticalHit:
+      paragraphs: []
+  playerSecondEncounter:
     poorHit:
       paragraphs: []
     normalHit:
       paragraphs: []
     criticalHit:
       paragraphs: []
-  secondEncounter:
+  playerLastEncounter:
     poorHit:
       paragraphs: []
     normalHit:
       paragraphs: []
     criticalHit:
       paragraphs: []
-  lastEncounter:
-    poorHit:
-      paragraphs: []
-    normalHit:
-      paragraphs: []
-    criticalHit:
-      paragraphs: []
+  enemyFirstEncounter:
+    numberedParagraphs:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  enemySecondEncounter:
+    numberedParagraphs:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  enemyLastEncounter:
+    numberedParagraphs:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
