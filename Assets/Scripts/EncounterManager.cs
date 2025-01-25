@@ -1,15 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EncounterManager : MonoBehaviour
 {
     public EncounterParagraphs encounterData; // Assign the ScriptableObject in the Inspector
 
     private EncounterData playerData;
-    private EncounterData enemyData;
+    private EnemyEncounterData enemyData;
 
-    void StartEncounter(int encounterNumber)
+    public void StartEncounter(int encounterNumber)
     {
-        // Select the current encounter data for the player and the enemy
+        // Select the current encounter data for the player
         playerData = encounterNumber switch
         {
             1 => encounterData.playerFirstEncounter,
@@ -18,6 +19,7 @@ public class EncounterManager : MonoBehaviour
             _ => null
         };
 
+        // Select the current encounter data for the enemy
         enemyData = encounterNumber switch
         {
             1 => encounterData.enemyFirstEncounter,
@@ -38,14 +40,13 @@ public class EncounterManager : MonoBehaviour
             string[] playerOptions = SelectPlayerParagraphsForRound();
             Debug.Log($"Round {round} - Player Options: {string.Join(", ", playerOptions)}");
 
-            // Simulate player's performance (replace with actual game logic)
-            float playerDamage = Random.Range(1f, 10f);  // Example: random damage
-            string enemyResponse = SelectEnemyResponse(playerDamage);
+            // Select enemy response (replace scoring logic with your custom implementation)
+            string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
             Debug.Log($"Enemy Response: {enemyResponse}");
         }
     }
 
-    string[] SelectPlayerParagraphsForRound()
+    private string[] SelectPlayerParagraphsForRound()
     {
         // Select 1 poor hit, 2 normal hits, and 1 critical hit paragraph
         string poorHit = SelectRandomParagraph(playerData.poorHit.paragraphs);
@@ -63,48 +64,32 @@ public class EncounterManager : MonoBehaviour
         return ShuffleArray(paragraphs);
     }
 
-    string SelectEnemyResponse(float playerDamage)
-    {
-        // Determine hit type based on player's damage
-        ParagraphGroup hitType = playerDamage switch
-        {
-            <= 3f => enemyData.poorHit,       // Poor Hit
-            > 3f and <= 7f => enemyData.normalHit, // Normal Hit
-            > 7f => enemyData.criticalHit,   // Critical Hit
-            _ => null
-        };
-
-        if (hitType == null || hitType.paragraphs.Length == 0)
-        {
-            return "Enemy says nothing."; // Fallback
-        }
-
-        return SelectRandomParagraph(hitType.paragraphs);
-    }
-
-    string SelectRandomParagraph(string[] paragraphs)
+    // Select a random paragraph from an array for critical and poor hits
+    private string SelectRandomParagraph(string[] paragraphs)
     {
         return paragraphs.Length > 0 ? paragraphs[Random.Range(0, paragraphs.Length)] : "No Paragraph";
     }
 
-    string[] SelectMultipleRandom(string[] paragraphs, int count)
+    // Select multiple random paragraphs from an array made for the player's normal hits
+    private string[] SelectMultipleRandom(string[] paragraphs, int count)
     {
         if (paragraphs.Length < count) return paragraphs; // Edge case: fewer options than requested
 
-        System.Collections.Generic.List<string> selected = new System.Collections.Generic.List<string>();
-        System.Collections.Generic.List<string> remaining = new System.Collections.Generic.List<string>(paragraphs);
+        List<string> selected = new List<string>(); // List to store selected paragraphs
+        List<string> remaining = new List<string>(paragraphs);  // List to store remaining paragraphs
 
         for (int i = 0; i < count; i++)
         {
-            int index = Random.Range(0, remaining.Count);
-            selected.Add(remaining[index]);
-            remaining.RemoveAt(index);
+            int index = Random.Range(0, remaining.Count); // Random index within remaining paragraphs
+            selected.Add(remaining[index]); // Add selected paragraph to the list
+            remaining.RemoveAt(index); // Remove selected paragraph from remaining
         }
 
         return selected.ToArray();
     }
 
-    string[] ShuffleArray(string[] array)
+    // Fisher-Yates shuffle algorithm to shuffle an array
+    private string[] ShuffleArray(string[] array)
     {
         for (int i = 0; i < array.Length; i++)
         {

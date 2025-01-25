@@ -1,29 +1,39 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EncounterParagraphs", menuName = "Game/Encounter Paragraphs")]
+// ScriptableObject to hold all encounter data
+[CreateAssetMenu(fileName = "EncounterParagraphs", menuName = "Game/EncounterParagraphs")]
 public class EncounterParagraphs : ScriptableObject
 {
-    // Player's paragraphs for each encounter
+    // Player encounter data
     public EncounterData playerFirstEncounter;
     public EncounterData playerSecondEncounter;
     public EncounterData playerLastEncounter;
 
-    // Enemy's paragraphs for each encounter
-    public EncounterData enemyFirstEncounter;
-    public EncounterData enemySecondEncounter;
-    public EncounterData enemyLastEncounter;
+    // Enemy encounter data
+    public EnemyEncounterData enemyFirstEncounter;
+    public EnemyEncounterData enemySecondEncounter;
+    public EnemyEncounterData enemyLastEncounter;
 }
 
+// Group of paragraphs for the player's performance (poor, normal, critical hits)
 [System.Serializable]
 public class EncounterData
 {
-    public ParagraphGroup poorHit;      // Weak attack paragraphs
-    public ParagraphGroup normalHit;    // Moderate attack paragraphs
-    public ParagraphGroup criticalHit;  // Strong attack paragraphs
+    public ParagraphGroup poorHit;
+    public ParagraphGroup normalHit;
+    public ParagraphGroup criticalHit;
 }
 
+// Enemy encounter data structured as numbered paragraphs (1-12)
+[System.Serializable]
+public class EnemyEncounterData
+{
+    public string[] numberedParagraphs; // 1 = least correct, 12 = most accurate
+}
+
+// Group of paragraphs of a specific type (e.g., poor hit)
 [System.Serializable]
 public class ParagraphGroup
 {
-    public string[] paragraphs; // Array of paragraphs for each hit type (Poor, Normal, Critical)
+    public string[] paragraphs; // Array of paragraphs for this type
 }
