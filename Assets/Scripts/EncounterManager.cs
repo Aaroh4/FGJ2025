@@ -1,9 +1,13 @@
 using UnityEngine;
+using TMPro; // For TextMeshProUGUI
 using System.Collections.Generic;
 
 public class EncounterManager : MonoBehaviour
 {
     public EncounterParagraphs encounterData; // Assign the ScriptableObject in the Inspector
+
+    [Header("UI References")]
+    public TextMeshProUGUI[] playerOptionTexts; // Array to hold the 4 text fields
 
     private EncounterData playerData;
     private EnemyEncounterData enemyData;
@@ -38,6 +42,8 @@ public class EncounterManager : MonoBehaviour
         for (int round = 1; round <= 6; round++)
         {
             string[] playerOptions = SelectPlayerParagraphsForRound();
+            DisplayPlayerOptions(playerOptions); // Display the player options on the UI
+
             Debug.Log($"Round {round} - Player Options: {string.Join(", ", playerOptions)}");
 
             // Select enemy response (replace scoring logic with your custom implementation)
@@ -62,6 +68,20 @@ public class EncounterManager : MonoBehaviour
 
         // Shuffle the paragraphs to randomize their order
         return ShuffleArray(paragraphs);
+    }
+
+    private void DisplayPlayerOptions(string[] options)
+    {
+        if (playerOptionTexts.Length != options.Length)
+        {
+            Debug.LogError("PlayerOptionTexts array size does not match the number of options!");
+            return;
+        }
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            playerOptionTexts[i].text = options[i]; // Assign the option text to the corresponding UI field
+        }
     }
 
     // Select a random paragraph from an array for critical and poor hits
