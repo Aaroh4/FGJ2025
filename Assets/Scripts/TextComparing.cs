@@ -3,9 +3,13 @@ using TMPro;
 
 public class TextComparing : MonoBehaviour
 {
+	public float totalTime;
+
     public TMP_InputField myInputField;
     public TMP_Text    mySecondText;
 	public TMP_Text		greyText;
+
+	public TMP_Text		timer;
 
     public string compareString = "Test amogus";
 
@@ -13,19 +17,18 @@ public class TextComparing : MonoBehaviour
     private void OnEnable()
     {
         myInputField.onValueChanged.AddListener(OnInputFieldChanged);
-		mySecondText.text += "|";
+		mySecondText.text += "_";
 		myInputField.ActivateInputField();
 		myInputField.interactable = false;
 		myInputField.characterLimit = 100;
 		greyText.text = compareString;
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-
+		totalTime = 30;
     }
 
     void OnInputFieldChanged(string newText)
     {
-
         int points = 0;
         int offset = 0;
         string testString;
@@ -50,7 +53,7 @@ public class TextComparing : MonoBehaviour
             points -= newText.Length - compareString.Length;
         }
 
-        mySecondText.text = testString + "|";
+        mySecondText.text = testString + "_";
 
         //mySecondText.text = newText;
 
@@ -59,6 +62,13 @@ public class TextComparing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (totalTime > 0)
+			totalTime -= Time.deltaTime;
+		else if (totalTime < 0)
+			totalTime = 0;
+		
+		timer.text = totalTime.ToString();
+
         if (myInputField != null && !myInputField.isFocused)
 		{
 			myInputField.interactable = true;
@@ -69,8 +79,8 @@ public class TextComparing : MonoBehaviour
 
 	void OnGUI()
 	{
-		//if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
-		//	Event.current.Use();
+		if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
+			totalTime -= 1;
 	}
 
 }

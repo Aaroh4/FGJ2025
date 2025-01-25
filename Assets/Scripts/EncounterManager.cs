@@ -24,9 +24,27 @@ public class EncounterManager : MonoBehaviour
 
 	void Update()
 	{
-		if (selecting)
-		{
+
+		if (selecting == true)
 			SelectSpell(playerOptions);
+		//if (textComparing.totalTime <= 0)
+		//	selecting = false;
+
+		if (selecting == false)
+		{
+			playerOptions = SelectPlayerParagraphsForRound();
+			DisplayPlayerOptions(playerOptions); // Display the player options on the UI
+			selecting = true;
+		}
+
+		if (textComparing.totalTime <= 0)
+		{
+			Debug.Log($"Round - Player Options: {string.Join(", ", playerOptions)}");
+
+			// Select enemy response (replace scoring logic with your custom implementation)
+			string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
+			Debug.Log($"Enemy Response: {enemyResponse}");
+			textComparing.mySecondText.text = enemyResponse;
 		}
 	}
 
@@ -55,20 +73,6 @@ public class EncounterManager : MonoBehaviour
             Debug.LogError("Invalid encounter number!");
             return;
         }
-
-        // Run 6 rounds of encounter
-        for (int round = 1; round <= 6; round++)
-        {
-            playerOptions = SelectPlayerParagraphsForRound();
-            DisplayPlayerOptions(playerOptions); // Display the player options on the UI
-			selecting = true;
-
-            Debug.Log($"Round {round} - Player Options: {string.Join(", ", playerOptions)}");
-
-            // Select enemy response (replace scoring logic with your custom implementation)
-            string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
-            Debug.Log($"Enemy Response: {enemyResponse}");
-        }
     }
 
 	private void SelectSpell(string[] options)
@@ -79,7 +83,6 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 1");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-			selecting = false;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
@@ -87,7 +90,6 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 2");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-			selecting = false;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
@@ -95,7 +97,6 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 3");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-			selecting = false;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
@@ -103,7 +104,6 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 4");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-			selecting = false;
 		}
 	}
 
