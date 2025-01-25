@@ -5,6 +5,9 @@ public class test : MonoBehaviour
 {
     public TMP_InputField myInputField;
     public TMP_Text    mySecondText;
+	public TMP_Text		greyText;
+
+    private string compareString = "Test amogus";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,18 +16,19 @@ public class test : MonoBehaviour
 		mySecondText.text += "|";
 		myInputField.ActivateInputField();
 		myInputField.interactable = false;
+		greyText.text = compareString;
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+
     }
 
     void OnInputFieldChanged(string newText)
     {
 
         int points = 0;
-        string compareString = "Test amogus";
-
+        int offset = 0;
         string testString;
         testString = newText;
-
-        int offset = 0;
 
         for (int  i = 0; i < newText.Length && i < compareString.Length; i++)
         {
@@ -47,7 +51,6 @@ public class test : MonoBehaviour
 
         mySecondText.text = testString + "|";
 
-
         //mySecondText.text = newText;
 
         //Debug.Log(points + "/" + compareString.Length);
@@ -55,17 +58,20 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (myInputField != null && !myInputField.isFocused)
+		{
+			myInputField.interactable = true;
+			myInputField.ActivateInputField();
+			myInputField.interactable = false;
+		}
     }
 
 	void OnGUI()
-{
-      if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
-        {
-            Event.current.Use();
-        }
+	{
+		if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
+			Event.current.Use();
+	}
 
-}
 }
 
 
