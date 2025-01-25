@@ -502,6 +502,7 @@ RectTransform:
   m_Children:
   - {fileID: 1117724896}
   - {fileID: 2018846237}
+  - {fileID: 707666390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -662,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &707666390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -676,7 +677,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1563248120}
-  m_Father: {fileID: 2018846237}
+  m_Father: {fileID: 641556564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1727,6 +1728,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounterData: {fileID: 11400000, guid: 2bceea8f68b41a64b8faeb8d36afd6f7, type: 2}
+  textComparing: {fileID: 1563248121}
+  writingField: {fileID: 707666389}
+  paragraphs: {fileID: 2018846236}
+  playerOptionTexts:
+  - {fileID: 1564009583}
+  - {fileID: 1869311049}
+  - {fileID: 695593760}
+  - {fileID: 1377153491}
 --- !u!4 &1561102849
 Transform:
   m_ObjectHideFlags: 0
@@ -1798,6 +1807,7 @@ MonoBehaviour:
   myInputField: {fileID: 1563248122}
   mySecondText: {fileID: 1479297196}
   greyText: {fileID: 579129390}
+  compareString: Test amogus
 --- !u!114 &1563248122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2585,7 +2595,6 @@ RectTransform:
   - {fileID: 1536411931}
   - {fileID: 277863615}
   - {fileID: 1718244549}
-  - {fileID: 707666390}
   m_Father: {fileID: 641556564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

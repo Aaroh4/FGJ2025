@@ -1,13 +1,34 @@
 using UnityEngine;
+using TMPro; // For TextMeshProUGUI
 using System.Collections.Generic;
 
 public class EncounterManager : MonoBehaviour
 {
-    public EncounterParagraphs encounterData; // Reference to the ScriptableObject
+    public EncounterParagraphs encounterData; // Assign the ScriptableObject in the Inspector
+
+	public TextComparing textComparing;
+
+	public GameObject	writingField;
+
+	public GameObject	paragraphs;
+
+    [Header("UI References")]
+    public TextMeshProUGUI[] playerOptionTexts; // Array to hold the 4 text fields
+
     private EncounterData playerData;
     private EnemyEncounterData enemyData;
-    
-    private int currentRound;
+
+	private string[] playerOptions;
+
+	private bool selecting;
+
+	void Update()
+	{
+		if (selecting)
+		{
+			SelectSpell(playerOptions);
+		}
+	}
 
     public void StartEncounter(int encounterNumber)
     {
@@ -34,10 +55,59 @@ public class EncounterManager : MonoBehaviour
             Debug.LogError("Invalid encounter number!");
             return;
         }
+
+        // Run 6 rounds of encounter
+        for (int round = 1; round <= 6; round++)
+        {
+            playerOptions = SelectPlayerParagraphsForRound();
+            DisplayPlayerOptions(playerOptions); // Display the player options on the UI
+			selecting = true;
+
+            Debug.Log($"Round {round} - Player Options: {string.Join(", ", playerOptions)}");
+
+            // Select enemy response (replace scoring logic with your custom implementation)
+            string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
+            Debug.Log($"Enemy Response: {enemyResponse}");
+        }
     }
 
-    // Method to get the player options for the current round
-    public string[] GetPlayerOptionsForCurrentRound()
+	private void SelectSpell(string[] options)
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			textComparing.compareString = options[0];
+			Debug.Log("Selected option 1");
+			writingField.SetActive(true);
+			paragraphs.SetActive(false);
+			selecting = false;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			textComparing.compareString = options[1];
+			Debug.Log("Selected option 2");
+			writingField.SetActive(true);
+			paragraphs.SetActive(false);
+			selecting = false;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			textComparing.compareString = options[2];
+			Debug.Log("Selected option 3");
+			writingField.SetActive(true);
+			paragraphs.SetActive(false);
+			selecting = false;
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			textComparing.compareString = options[3];
+			Debug.Log("Selected option 4");
+			writingField.SetActive(true);
+			paragraphs.SetActive(false);
+			selecting = false;
+		}
+	}
+
+    private string[] SelectPlayerParagraphsForRound()
     {
         // Select 1 poor hit, 2 normal hits, and 1 critical hit paragraph
         string poorHit = SelectRandomParagraph(playerData.poorHit.paragraphs);
@@ -55,11 +125,18 @@ public class EncounterManager : MonoBehaviour
         return ShuffleArray(paragraphs);
     }
 
-    // Method to get the enemy spell for the current round
-    public string GetEnemySpellForCurrentRound()
+    private void DisplayPlayerOptions(string[] options)
     {
-        // Select a random enemy spell (12 possible spells)
-        return SelectRandomParagraph(enemyData.numberedParagraphs);
+        if (playerOptionTexts.Length != options.Length)
+        {
+            Debug.LogError("PlayerOptionTexts array size does not match the number of options!");
+            return;
+        }
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            playerOptionTexts[i].text = options[i]; // Assign the option text to the corresponding UI field
+        }
     }
 
     // Select a random paragraph from an array for critical and poor hits

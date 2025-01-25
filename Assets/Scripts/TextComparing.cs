@@ -1,16 +1,16 @@
 using UnityEngine;
 using TMPro;
 
-public class test : MonoBehaviour
+public class TextComparing : MonoBehaviour
 {
     public TMP_InputField myInputField;
     public TMP_Text    mySecondText;
 	public TMP_Text		greyText;
 
-    private string compareString = "Test amogus";
+    public string compareString = "Test amogus";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
         myInputField.onValueChanged.AddListener(OnInputFieldChanged);
 		mySecondText.text += "|";
