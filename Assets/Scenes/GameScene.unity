@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myInputField: {fileID: 1563248122}
   mySecondText: {fileID: 1479297196}
-  greyText: {fileID: 0}
+  greyText: {fileID: 579129390}
 --- !u!114 &1563248122
 MonoBehaviour:
   m_ObjectHideFlags: 0
