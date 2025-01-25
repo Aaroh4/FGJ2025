@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 277863617}
   - component: {fileID: 277863616}
   m_Layer: 5
-  m_Name: Paragraph_3
+  m_Name: Encounter_3_Paragraph_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,9 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stone of healing was in your grasp, bones will remain where you lay.
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -523,7 +521,7 @@ GameObject:
   - component: {fileID: 868002139}
   - component: {fileID: 868002138}
   m_Layer: 5
-  m_Name: Paragraph_1
+  m_Name: Encounter_1_Paragraph_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -905,9 +903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stone of healing was in your grasp, bones will remain where you lay.
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1428,7 +1424,7 @@ GameObject:
   - component: {fileID: 1536411933}
   - component: {fileID: 1536411932}
   m_Layer: 5
-  m_Name: Paragraph_2
+  m_Name: Encounter_2_Paragraph_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1522,6 +1518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounterData: {fileID: 11400000, guid: 2bceea8f68b41a64b8faeb8d36afd6f7, type: 2}
+  playerOptionTexts:
+  - {fileID: 1564009583}
+  - {fileID: 1869311049}
+  - {fileID: 695593760}
+  - {fileID: 1377153491}
 --- !u!4 &1561102849
 Transform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1563248120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1789,9 +1790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stone of healing was in your grasp, bones will remain where you lay.
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1935,7 +1934,7 @@ GameObject:
   - component: {fileID: 1718244551}
   - component: {fileID: 1718244550}
   m_Layer: 5
-  m_Name: Paragraph_4
+  m_Name: Encounter_4_Paragraph_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2135,9 +2134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stone of healing was in your grasp, bones will remain where you lay.
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

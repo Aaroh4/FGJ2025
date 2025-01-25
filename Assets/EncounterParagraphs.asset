@@ -14,23 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFirstEncounter:
     poorHit:
-      paragraphs: []
+      paragraphs:
+      - Born in sun once in time were you, gone is that light from your heart.
+      - "Majestic beast royal and truthful, sympathetic to plight\u2019s of man."
+      - Healing was asked of you by all, appealing to your holy grace.
+      - Furry coat on your backside, scurry in the underbrush now.
+      - "Packs of you don\u2019t frighten at all, hats I\u2019ve made out of skins
+        of mice."
+      - Underworld is your only home, thunder bird calls for you in vain.
     normalHit:
       paragraphs:
-      - 'Stone of healing was in your grasp, bones will remain where you lay. '
-      - 'Power of nature was your once, lower than the gnomes you go now. '
-      - 'Skies were once your domain you beast, ties of earth bind you down to mud.  '
-      - 'Spirits heeded your command beast, limits of that are known to me. '
-      - 'Victory you used to assure, history will forget all that too. '
-      - 'Malevolent spirit you are, irreverent to godly will. '
-      - 'Messenger of higher planar beings, passenger to cosmic rivers. '
-      - 'Fearless is your reputation, nearness to me should cause you fright. '
-      - 'Authority over lesser spirits, majority were under your thrall. '
-      - 'Your claws wounded forever time, before I was taught protection. '
-      - 'Child stealer making mothers cry, reviled through all of lands of man.  '
-      - 'Revered for your awful powers, feared by those without knowledge over you. '
+      - Stone of healing was in your grasp, bones will remain where you lay.
+      - Power of nature was your once, lower than the gnomes you go now.
+      - Skies were once your domain you beast, ties of earth bind you down to mud.
+      - Spirits heeded your command beast, limits of that are known to me.
+      - Victory you used to assure, history will forget all that too.
+      - Malevolent spirit you are, irreverent to godly will.
+      - Messenger of higher planar beings, passenger to cosmic rivers.
+      - Fearless is your reputation, nearness to me should cause you fright.
+      - Authority over lesser spirits, majority were under your thrall.
+      - Your claws wounded forever time, before I was taught protection.
+      - Child stealer making mothers cry, reviled through all of lands of man.
+      - Revered for your awful powers, feared by those without knowledge over you.
     criticalHit:
-      paragraphs: []
+      paragraphs:
+      - I name your secrets dark thing, I tame the spirit in you.
+      - I see through your darkest places, I deem the fight is over soon.
+      - You have the gift of far sight, too bad I move out of your eyes.
+      - Ascension you did me promise, intention was lost from my heart.
+      - Prophesy you brought to my kind, cacophony was what they heard.
+      - "Guiding souls to the Otherworld, feeding on sacrificial birds\u2019 blood."
   playerSecondEncounter:
     poorHit:
       paragraphs: []
