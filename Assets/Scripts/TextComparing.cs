@@ -16,6 +16,7 @@ public class test : MonoBehaviour
 		mySecondText.text += "|";
 		myInputField.ActivateInputField();
 		myInputField.interactable = false;
+		myInputField.characterLimit = 100;
 		greyText.text = compareString;
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -68,8 +69,8 @@ public class test : MonoBehaviour
 
 	void OnGUI()
 	{
-		if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
-			Event.current.Use();
+		//if( Event.current.keyCode == KeyCode.Backspace && ( Event.current.type == EventType.KeyUp || Event.current.type == EventType.KeyDown ) )
+		//	Event.current.Use();
 	}
 
 }
