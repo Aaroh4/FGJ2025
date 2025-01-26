@@ -46,18 +46,68 @@ MonoBehaviour:
       - "Guiding souls to the Otherworld, feeding on sacrificial birds\u2019 blood."
   playerSecondEncounter:
     poorHit:
-      paragraphs: []
+      paragraphs:
+      - Most loyal servant of all spirits, boast of your service to the wise.
+      - Protection from tricks of witches, reflection of their evil souls.
+      - Offer holy healing to all, water to crops caught in the drought.
+      - Agile and majestic to see, battle under the command from me.
+      - Creature of the sun and moon, teacher of the lost lore and more.
+      - Wiser than any human alive, advisor to those who us rule.
     normalHit:
-      paragraphs: []
+      paragraphs:
+      - Death you bring on men and animals, health is lost from those that touch
+        you.
+      - Predator among the sheep flock, inheritor of the deep realm.
+      - Enemy of shepherds and sheep, hegemony over the land.
+      - Strength in body and spirit too, depth beyond the ken of any man.
+      - Independent out of control, descendent of beast and spirit.
+      - Warriors you guide in combat, barriers are brought before you.
+      - Evil is your essence through, people escape when they hear of you.
+      - Untamed force of nature you are, blamed for all the calamity.
+      - Brave shake when you raise your voice up, knave and lord both challenge you.
+      - Fools you dog to the other side, abuse them and harry from here.
+      - Demonic force from Underworld, chthonic being preying on the infirm.
+      - Horned steed of deities of old times, adorned with the crown of skin and
+        bone.
     criticalHit:
-      paragraphs: []
+      paragraphs:
+      - Madness you bring on your victims, blackness remains of their free soul.
+      - Shape of mammal and man alike, drape your skin upon skeleton.
+      - Otherworldly being from the dark, another thirty lost to you.
+      - Enlightenment you give for price, disquietment for the restless mind.
+      - "Spirits of the dead follow you, until it\u2019s time to bring them out."
+      - Change your shape any way you want to, strange spirit of the woods and moors.
   playerLastEncounter:
     poorHit:
-      paragraphs: []
+      paragraphs:
+      - Worshipful and revered one, purposeful force of great might.
+      - Devotion is cast towards you, spoken in tones of highest praises.
+      - Sacred being who protects us all, hatred is wasted around you.
+      - Ensurer of fertility, procurer of excellence.
+      - Medicine from your many heads, impediment to dread disease.
+      - You basilisk or cockatrice, who formed your body out of bearskins.
     normalHit:
-      paragraphs: []
+      paragraphs:
+      - Spirit brethren of forefathers, nearest being to our human kind.
+      - "Nature\u2019s rebirth is in your hand, makers of new life follow you."
+      - Demon in the form of fleshy mass, treason lies inside your scaly chest.
+      - Venomous thing bringing quick death, generous in your poison bite.
+      - Horrible though your countenance, terrible is your own downfall.
+      - "Darkness is your protection, harshness of the sun\u2019s rays hurt you."
+      - Power of witchcraft animates you, devour your own soul from within.
+      - Your star sign rules the North sky dome, soar back to your own high abode.
+      - "No matter how many you eat, know that I have the hunter\u2019s spirit."
+      - Magic is not your driving force, panic that you spread gives you life.
+      - Familiar spirits you also eat, figure how to swallow yourself.
+      - In forest floor you swim like fish, within graying woods your paws tread.
     criticalHit:
-      paragraphs: []
+      paragraphs:
+      - Chthonic dweller of underworld, mnemonic remnant of ancients.
+      - Fire burns in your hot charcoal heart, desire to lay waste to the world.
+      - Harvester of souls takes them all, forester of the human trees.
+      - Cosmic being descended from skies, harmonic sound of distant stars.
+      - Fourfold soul more complex than man, for old gods you pledged your vow.
+      - Diviner of coming days and past, designer of fates good and bad.
   enemyFirstEncounter:
     numberedParagraphs:
     - Out from the soil your kind did rise, devout to the spirits of old.
@@ -74,29 +124,29 @@ MonoBehaviour:
     - Revered for your awful powers, feared by those without knowledge over you.
   enemySecondEncounter:
     numberedParagraphs:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Slasher of woods and burner of bush, catcher of fish and fowl and beast.
+    - Born with the caul mark of death sight, worn on your neck a magic charm.
+    - Tell yourself you were unfairly held, spell you spoke to gain your fortune.
+    - Summoned your own familiar spirit, drum and bone in your gnarled old hands.
+    - "Learned lore of the world\u2019s history, unconcerned of the price to pay."
+    - Talismans you crafted for help, who listens to the noise they make.
+    - Folk of your village were not wiser, awoke not to your evil scheme.
+    - Property and big family, mockery did not stop at all.
+    - Teacher and master you killed, procedure to gain their power.
+    - Two are kidnappers here now, who is to tell us two apart.
+    - Everything that you stole yourself, marrying the widow first year.
+    - Child sacrifice was not enough, undefiled purity was next.
   enemyLastEncounter:
     numberedParagraphs:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Enthusiasm fills your whole mind, spasms and fits your trance now betrays.
+    - Wise in lore you are finally, advise of your teacher you miss.
+    - Abnormal objects gathered, immoral means to own them all.
+    - Envy and greed drove you to win, many sorceries that took you.
+    - Tools from your master did you steal, rules you broke at every step you could.
+    - Forces beyond your understanding, gorges Otherworld with summons.
+    - More you offered us than you had, before we came our debt to get.
+    - Bound your dead teacher as a ghost, found far more uses for their soul.
+    - Rot spawns buboes under your skin, shot through with boils filled with maggots.
+    - For your latest spell you killed, tore apart human sacrifice.
+    - Give all your offspring as promised, live out your life in solitude.
+    - All of family you offered, small price for your craved accolade.

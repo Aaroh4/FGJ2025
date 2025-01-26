@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +13,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject deadPanel;
     public GameObject victoryPanel;
-    
+
+    public GameObject Encounter1Panel;
+    public GameObject Encounter2Panel;
+    public GameObject Encounter3Panel;
+
+    public GameObject Encounter1VictoryPanel;
+    public GameObject Encounter2VictoryPanel;
+    public GameObject Encounter3VictoryPanel;
 
     void Start()
     {
@@ -47,7 +55,8 @@ public class GameManager : MonoBehaviour
             if (Enemy1HP <= 0)
             {
                 Debug.Log("Enemy 1 has been defeated!");
-                encounterManager.StartEncounter(2); 
+                
+                StartCoroutine(GoToNextEncounter(2));
             }
         }
         else if (enemyNumber == 2)
@@ -58,7 +67,7 @@ public class GameManager : MonoBehaviour
             if (Enemy2HP <= 0)
             {
                 Debug.Log("Enemy 2 has been defeated!");
-                encounterManager.StartEncounter(3);
+                StartCoroutine(GoToNextEncounter(3));
             }
         }
         else if (enemyNumber == 3)
@@ -69,8 +78,35 @@ public class GameManager : MonoBehaviour
             if (Enemy3HP <= 0)
             {
                 Debug.Log("Enemy 3 has been defeated!");
-                
+                Encounter3Panel.SetActive(false);
+                victoryPanel.SetActive(true);
+
             }
+        }
+    }
+
+    private IEnumerator GoToNextEncounter(int encounter)
+    {
+        switch (encounter)
+        {
+            case 2:
+                Encounter1Panel.SetActive(false);
+                Encounter1VictoryPanel.SetActive(true);
+                yield return new WaitForSeconds(5);
+                Encounter1VictoryPanel.SetActive(false);
+                Encounter2Panel.SetActive(true);
+
+                break;
+            case 3:
+                Encounter2Panel.SetActive(false);
+                Encounter2VictoryPanel.SetActive(true);
+                yield return new WaitForSeconds(5);
+                Encounter2VictoryPanel.SetActive(false);
+                Encounter3Panel.SetActive(true);
+                encounterManager.StartEncounter(3);
+                break;
+            default:
+                break;
         }
     }
 
