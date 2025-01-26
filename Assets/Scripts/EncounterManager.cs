@@ -35,21 +35,28 @@ public class EncounterManager : MonoBehaviour
 			playerOptions = SelectPlayerParagraphsForRound();
 			DisplayPlayerOptions(playerOptions); // Display the player options on the UI
 			selecting = true;
+			Debug.Log($"Round - Player Options: {string.Join(", ", playerOptions)}");
 		}
+
+        Debug.Log("Total time is: " + textComparing.totalTime);
 
 		if (textComparing.totalTime <= 0)
 		{
-			Debug.Log($"Round - Player Options: {string.Join(", ", playerOptions)}");
-
-			// Select enemy response (replace scoring logic with your custom implementation)
-			string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
-			Debug.Log($"Enemy Response: {enemyResponse}");
-			textComparing.mySecondText.text = enemyResponse;
+            SelectEnemyResponse();
 		}
 	}
 
+    void SelectEnemyResponse()
+    {
+        // Select enemy response (replace scoring logic with your custom implementation)
+        string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
+        Debug.Log($"Enemy Response: {enemyResponse}");
+        textComparing.mySecondText.text = enemyResponse;
+    }
+
     public void StartEncounter(int encounterNumber)
     {
+        textComparing.totalTime = 30;
         // Select the current encounter data for the player
         playerData = encounterNumber switch
         {
@@ -83,6 +90,7 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 1");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
+            textComparing.totalTime = 30;
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
@@ -90,21 +98,24 @@ public class EncounterManager : MonoBehaviour
 			Debug.Log("Selected option 2");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-		}
+            textComparing.totalTime = 30;
+        }
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			textComparing.compareString = options[2];
 			Debug.Log("Selected option 3");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-		}
+            textComparing.totalTime = 30;
+        }
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			textComparing.compareString = options[3];
 			Debug.Log("Selected option 4");
 			writingField.SetActive(true);
 			paragraphs.SetActive(false);
-		}
+            textComparing.totalTime = 30;
+        }
 	}
 
     private string[] SelectPlayerParagraphsForRound()

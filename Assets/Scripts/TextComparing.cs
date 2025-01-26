@@ -3,7 +3,7 @@ using TMPro;
 
 public class TextComparing : MonoBehaviour
 {
-	public float totalTime;
+    public float totalTime = 30f;
 
     public TMP_InputField myInputField;
     public TMP_Text    mySecondText;
@@ -12,6 +12,12 @@ public class TextComparing : MonoBehaviour
 	public TMP_Text		timer;
 
     public string compareString = "Test amogus";
+
+    private void Start()
+    {
+
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
