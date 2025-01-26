@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Net.NetworkInformation;
 
 public class TextComparing : MonoBehaviour
 {
@@ -13,11 +14,16 @@ public class TextComparing : MonoBehaviour
 
     public string compareString = "Test amogus";
 
+    public int points = 0;
     private void Start()
     {
 
     }
-
+        
+    public int CalculatePoints()
+    {
+        return points;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
@@ -35,8 +41,8 @@ public class TextComparing : MonoBehaviour
 
     void OnInputFieldChanged(string newText)
     {
-        int points = 0;
         int offset = 0;
+        points = 0;
         string testString;
         testString = newText;
 

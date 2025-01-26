@@ -4,7 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public EncounterManager encounterManager; // Reference to the EncounterManager
     public int heroMaxHP = 15;                // Maximum HP for the hero
-    private int heroCurrentHP;
+    public int heroCurrentHP;
+
+    public GameObject deadPanel;
+    
 
     void Start()
     {

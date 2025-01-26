@@ -1,16 +1,20 @@
 using UnityEngine;
 using TMPro; // For TextMeshProUGUI
+using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class EncounterManager : MonoBehaviour
 {
     public EncounterParagraphs encounterData; // Assign the ScriptableObject in the Inspector
 
-	public TextComparing textComparing;
+    public GameManager gameManager;
 
-	public GameObject	writingField;
+    public TextComparing textComparing;
 
-	public GameObject	paragraphs;
+    public GameObject writingField;
+
+    public GameObject paragraphs;
 
     [Header("UI References")]
     public TextMeshProUGUI[] playerOptionTexts; // Array to hold the 4 text fields
@@ -18,40 +22,61 @@ public class EncounterManager : MonoBehaviour
     private EncounterData playerData;
     private EnemyEncounterData enemyData;
 
-	private string[] playerOptions;
+    private string[] playerOptions;
 
-	private bool selecting;
+    private bool selecting;
+    private bool playerSpelling;
+    private bool enemyResponding;
 
-	void Update()
-	{
 
-		if (selecting == true)
-			SelectSpell(playerOptions);
-		//if (textComparing.totalTime <= 0)
-		//	selecting = false;
+    void Update()
+    {
+        if (selecting)
+        {
+            paragraphs.SetActive(true);
+            writingField.SetActive(false);
+            textComparing.mySecondText.text = "";
+            textComparing.greyText.text = "";
+            textComparing.myInputField.text = "";
+            playerOptions = SelectPlayerParagraphsForRound();
+            DisplayPlayerOptions(playerOptions); // Display the player options on the UI
+            selecting = false;
+            playerSpelling = true;
+            Debug.Log($"Round - Player Options: {string.Join(", ", playerOptions)}");
+        }
 
-		if (selecting == false)
-		{
-			playerOptions = SelectPlayerParagraphsForRound();
-			DisplayPlayerOptions(playerOptions); // Display the player options on the UI
-			selecting = true;
-			Debug.Log($"Round - Player Options: {string.Join(", ", playerOptions)}");
-		}
+        if (playerSpelling)
+        {
+            SelectSpell(playerOptions);
+        }
 
-        Debug.Log("Total time is: " + textComparing.totalTime);
-
-		if (textComparing.totalTime <= 0)
-		{
+        if (textComparing.totalTime <= 0 && enemyResponding)
+        {
             SelectEnemyResponse();
-		}
-	}
+            DealDamageToPlayer();
+            enemyResponding = false;
+
+            Debug.Log("Player HP: " + gameManager.heroCurrentHP);
+
+            if (gameManager.heroCurrentHP > 0)
+            {
+                StartCoroutine(WaitAndStartNewRound(4f)); // Wait for 8 seconds before starting a new round
+            }
+            else
+            {
+                Debug.Log("Player is defeated!");
+            }
+        }
+        Debug.Log("Total time is: " + textComparing.totalTime);
+    }
 
     void SelectEnemyResponse()
     {
-        // Select enemy response (replace scoring logic with your custom implementation)
+        textComparing.myInputField.gameObject.SetActive(false);
+        textComparing.greyText.text = "";
         string enemyResponse = SelectRandomParagraph(enemyData.numberedParagraphs);
         Debug.Log($"Enemy Response: {enemyResponse}");
-        textComparing.mySecondText.text = enemyResponse;
+        textComparing.mySecondText.text = "Enemy Response: " + enemyResponse;
     }
 
     public void StartEncounter(int encounterNumber)
@@ -80,43 +105,70 @@ public class EncounterManager : MonoBehaviour
             Debug.LogError("Invalid encounter number!");
             return;
         }
+
+        StartNewRound();
     }
 
-	private void SelectSpell(string[] options)
-	{
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			textComparing.compareString = options[0];
-			Debug.Log("Selected option 1");
-			writingField.SetActive(true);
-			paragraphs.SetActive(false);
+    private void StartNewRound()
+    {
+        selecting = true;
+        playerSpelling = false;
+        enemyResponding = false;
+        textComparing.totalTime = 2147483647;
+    }
+
+    private void SelectSpell(string[] options)
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            textComparing.compareString = options[0];
+            Debug.Log("Selected option 1");
+            writingField.SetActive(true);
+            paragraphs.SetActive(false);
             textComparing.totalTime = 30;
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			textComparing.compareString = options[1];
-			Debug.Log("Selected option 2");
-			writingField.SetActive(true);
-			paragraphs.SetActive(false);
-            textComparing.totalTime = 30;
+            playerSpelling = false;
+            enemyResponding = true;
+            textComparing.myInputField.gameObject.SetActive(true);
         }
-		else if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			textComparing.compareString = options[2];
-			Debug.Log("Selected option 3");
-			writingField.SetActive(true);
-			paragraphs.SetActive(false);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            textComparing.compareString = options[1];
+            Debug.Log("Selected option 2");
+            writingField.SetActive(true);
+            paragraphs.SetActive(false);
             textComparing.totalTime = 30;
+            playerSpelling = false;
+            enemyResponding = true;
+            textComparing.myInputField.gameObject.SetActive(true);
         }
-		else if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			textComparing.compareString = options[3];
-			Debug.Log("Selected option 4");
-			writingField.SetActive(true);
-			paragraphs.SetActive(false);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            textComparing.compareString = options[2];
+            Debug.Log("Selected option 3");
+            writingField.SetActive(true);
+            paragraphs.SetActive(false);
             textComparing.totalTime = 30;
+            playerSpelling = false;
+            enemyResponding = true;
+            textComparing.myInputField.gameObject.SetActive(true);
         }
-	}
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            textComparing.compareString = options[3];
+            Debug.Log("Selected option 4");
+            writingField.SetActive(true);
+            paragraphs.SetActive(false);
+            textComparing.totalTime = 30;
+            playerSpelling = false;
+            enemyResponding = true;
+            textComparing.myInputField.gameObject.SetActive(true);
+        }
+    }
+
+    private void DealDamageToPlayer()
+    {
+        gameManager.TakeDamage(textComparing.compareString.Length - textComparing.CalculatePoints());
+    }
 
     private string[] SelectPlayerParagraphsForRound()
     {
@@ -185,5 +237,11 @@ public class EncounterManager : MonoBehaviour
             array[randomIndex] = temp;
         }
         return array;
+    }
+
+    private IEnumerator WaitAndStartNewRound(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartNewRound();
     }
 }
