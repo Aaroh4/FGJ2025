@@ -28,6 +28,8 @@ public class Control : MonoBehaviour
 		yield return new WaitForSecondsRealtime(5);
 		replace.text = amogous[4];
 		yield return new WaitForSecondsRealtime(5);
+		replace.text = amogous[5];
+		yield return new WaitForSecondsRealtime(5);
 		SceneManager.LoadScene("GameScene");
 	}
 }
