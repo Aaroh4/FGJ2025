@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         deadPanel.SetActive(true);
         yield return new WaitForSeconds(5);
         deadPanel.SetActive(false);
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void StartFirstEncounter()

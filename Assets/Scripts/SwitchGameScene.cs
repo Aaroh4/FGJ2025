@@ -20,7 +20,12 @@ public class Control : MonoBehaviour
 
 	public string[] strings;
 
-	public void NextScene()
+    private void Start()
+    {
+		Cursor.visible = true;
+    }
+
+    public void NextScene()
     {
         //SceneManager.LoadScene("GameScene");
 		tree.SetActive(true);
