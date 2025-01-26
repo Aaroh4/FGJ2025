@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         ResetHeroHP(); 
         StartFirstEncounter();
+        heroCurrentHP = heroMaxHP;
     }
 
     public void ResetHeroHP()
@@ -90,17 +92,27 @@ public class GameManager : MonoBehaviour
         switch (encounter)
         {
             case 2:
+                encounterManager.writingField.SetActive(false);
+                encounterManager.paragraphs.SetActive(false);
                 Encounter1Panel.SetActive(false);
                 Encounter1VictoryPanel.SetActive(true);
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(8);
+                encounterManager.writingField.SetActive(true);
+                encounterManager.paragraphs.SetActive(true);
+                encounterManager.currentEncounter++;
                 Encounter1VictoryPanel.SetActive(false);
                 Encounter2Panel.SetActive(true);
 
                 break;
             case 3:
+                encounterManager.writingField.SetActive(false);
+                encounterManager.paragraphs.SetActive(false);
                 Encounter2Panel.SetActive(false);
                 Encounter2VictoryPanel.SetActive(true);
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(8);
+                encounterManager.writingField.SetActive(true);
+                encounterManager.paragraphs.SetActive(true);
+                encounterManager.currentEncounter++;
                 Encounter2VictoryPanel.SetActive(false);
                 Encounter3Panel.SetActive(true);
                 encounterManager.StartEncounter(3);
@@ -110,10 +122,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HandleGameOver()
+    public IEnumerator HandleGameOver()
     {
         Debug.Log("Game Over! The hero has been defeated.");
-        // Additional game over logic can be added here, such as restarting the game or showing a Game Over screen
+        deadPanel.SetActive(true);
+        yield return new WaitForSeconds(5);
+        deadPanel.SetActive(false);
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void StartFirstEncounter()

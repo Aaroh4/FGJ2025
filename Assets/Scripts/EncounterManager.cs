@@ -62,11 +62,20 @@ public class EncounterManager : MonoBehaviour
 
             if (gameManager.heroCurrentHP > 0)
             {
-                StartCoroutine(WaitAndStartNewRound(4f)); // Wait for 8 seconds before starting a new round
+                StartCoroutine(WaitAndStartNewRound(8f)); // Wait for 8 seconds before starting a new round
             }
             else
             {
                 Debug.Log("Player is defeated!");
+                writingField.SetActive(false);
+                paragraphs.SetActive(false);
+                gameManager.Encounter1Panel.SetActive(false);
+                gameManager.Encounter2Panel.SetActive(false);
+                gameManager.Encounter3Panel.SetActive(false);
+                gameManager.Encounter1VictoryPanel.SetActive(false);
+                gameManager.Encounter2VictoryPanel.SetActive(false);
+                gameManager.Encounter3VictoryPanel.SetActive(false);
+                gameManager.StartCoroutine(gameManager.HandleGameOver());
             }
         }
         Debug.Log("Total time is: " + textComparing.totalTime);
