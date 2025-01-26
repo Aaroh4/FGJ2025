@@ -27,6 +27,7 @@ public class EncounterManager : MonoBehaviour
     private bool selecting;
     private bool playerSpelling;
     private bool enemyResponding;
+    public int currentEncounter = 1;
 
 
     void Update()
@@ -54,6 +55,7 @@ public class EncounterManager : MonoBehaviour
         {
             SelectEnemyResponse();
             DealDamageToPlayer();
+            gameManager.DealDamageToEnemy(15, currentEncounter);
             enemyResponding = false;
 
             Debug.Log("Player HP: " + gameManager.heroCurrentHP);

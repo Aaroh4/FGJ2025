@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int Enemy3HP = 60;
 
     public GameObject deadPanel;
+    public GameObject victoryPanel;
     
 
     void Start()
@@ -43,16 +44,33 @@ public class GameManager : MonoBehaviour
         {
             Enemy1HP -= damage;
             Debug.Log($"Enemy 1 took {damage} damage! Current HP: {Enemy1HP}");
+            if (Enemy1HP <= 0)
+            {
+                Debug.Log("Enemy 1 has been defeated!");
+                encounterManager.StartEncounter(2); 
+            }
         }
         else if (enemyNumber == 2)
         {
             Enemy2HP -= damage;
             Debug.Log($"Enemy 2 took {damage} damage! Current HP: {Enemy2HP}");
+
+            if (Enemy2HP <= 0)
+            {
+                Debug.Log("Enemy 2 has been defeated!");
+                encounterManager.StartEncounter(3);
+            }
         }
         else if (enemyNumber == 3)
         {
             Enemy3HP -= damage;
             Debug.Log($"Enemy 3 took {damage} damage! Current HP: {Enemy3HP}");
+
+            if (Enemy3HP <= 0)
+            {
+                Debug.Log("Enemy 3 has been defeated!");
+                
+            }
         }
     }
 
