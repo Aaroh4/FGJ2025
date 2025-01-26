@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
     public int heroMaxHP = 15;                // Maximum HP for the hero
     public int heroCurrentHP;
 
+    public int Enemy1HP = 20;
+    public int Enemy2HP = 40;
+    public int Enemy3HP = 60;
+
     public GameObject deadPanel;
     
 
@@ -30,6 +34,25 @@ public class GameManager : MonoBehaviour
         {
             heroCurrentHP = 0;
             HandleGameOver();
+        }
+    }
+
+    public void DealDamageToEnemy(int damage, int enemyNumber)
+    {
+        if (enemyNumber == 1)
+        {
+            Enemy1HP -= damage;
+            Debug.Log($"Enemy 1 took {damage} damage! Current HP: {Enemy1HP}");
+        }
+        else if (enemyNumber == 2)
+        {
+            Enemy2HP -= damage;
+            Debug.Log($"Enemy 2 took {damage} damage! Current HP: {Enemy2HP}");
+        }
+        else if (enemyNumber == 3)
+        {
+            Enemy3HP -= damage;
+            Debug.Log($"Enemy 3 took {damage} damage! Current HP: {Enemy3HP}");
         }
     }
 
